@@ -1,0 +1,16 @@
+@import "reset/reset.css";
+
+@import "utility/grid.css";
+@import "utility/header.css";
+@import "utility/footer.css";
+
+@import "animais/animais.css";
+@import "faq/faq.css";
+@import "contato/contato.css";
+
+@import "js/tab-nav.css";
+@import "js/accordion.css";
+@import "js/smooth-scroll.css";
+@import "js/modal.css";
+@import "js/tooltip.css";
+@import "js/dropdown-menu.css";
