@@ -1,39 +1,26 @@
+import outsideClick from './outside-click.js'
+
+// let's help mobile users
+// click event takes 300 milliseconds to take action while touchstart is immediate.
+
 export default function initDropdownMenu() {
+  const dropdownMenus = document.querySelectorAll('[data-dropdown]')
 
-}
-//you can refer a callback function to various events like this
-/*
-
-dropdownMenu.addEventListener('touchstart', handleEvent)
-dropdownMenu.addEventListener('click', handleEvent)
-
-*/
-
-const dropdownMenus = document.querySelectorAll('[data-dropdown]')
-
-dropdownMenus.forEach((dropdownMenu) =>{
-  dropdownMenu.addEventListener('click', handleEvent)
-  //or like this
+  //you can refer a callback function to various events by this:
   /*
-  ['touchstart', 'click'].forEach(userEvent => {
-  dropdownMenu.addEventListener(userEvent, handleEvent)
-  })*/
-})
+  dropdownMenu.addEventListener('touchstart', handleEvent)
+  dropdownMenu.addEventListener('click', handleEvent)
+  */
 
+  dropdownMenus.forEach((dropdownMenu) =>{  
+    ['touchstart', 'click'] .forEach(event => {
+      dropdownMenu.addEventListener(event, handleEvent)
+    })
+  })
 
-function handleEvent(event) {
-  event.preventDefault()
-  this.classList.toggle('active')
-
-  //outsideClick(this, () => console.log('ativou'))
+  function handleEvent(event) {
+    event.preventDefault()
+    this.classList.add('active')
+    outsideClick(this, () => this.classList.remove('active'), ['touchstart', 'click'])
+  }
 }
-
-
-// function outsideClick(element, callback) {
-//   const html = document.documentElement;
-//   html.addEventListener('click', handleOutsideClick)
-
-//   function handleOutsideClick() {
-//     callback();
-//   }
-// }
